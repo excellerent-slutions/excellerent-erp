@@ -47,19 +47,7 @@ services:
       - excellent-database
     restart: always
     
-  nginx-stack:
-    container_name: nginx-stack
-    build:
-      context: ./dockerfile
-      dockerfile: nginx.Dockerfile
-    volumes:
-      - ./nginx-config:/etc/nginx/conf.d
-    ports:
-      - 80:80   #non secure
-      - 443:443 #ssl
-    depends_on:
-      - excellent-erp
-    restart: always
+  
 
 volumes:
   odoo-web-data:
