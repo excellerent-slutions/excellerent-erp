@@ -40,13 +40,26 @@ services:
     links:
       - "excellent-database:pgsql-server"
     environment:
-      PGADMIN_DEFAULT_EMAIL: shane@odootraining.ddns.net
-      PGADMIN_DEFAULT_PASSWORD: secret
+      PGADMIN_DEFAULT_EMAIL: sabebaw@excellentsolutions.com
+      PGADMIN_DEFAULT_PASSWORD: secret123
       PGADMIN_LISTEN_PORT: 80
     depends_on:
       - excellent-database
     restart: always
-    
+  nginx-stack:
+    container_name: nginx-stack
+    build:
+      context: ./dockerfile
+      dockerfile: nginx.Dockerfile
+    volumes:
+      - ./nginx-config:/etc/nginx/conf.d
+    ports:
+      - 80:80   #non secure
+      - 443:443 #ssl
+    depends_on:
+      - excellent-erp
+    restart: always
+
   
 
 volumes:
