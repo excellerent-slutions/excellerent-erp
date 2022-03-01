@@ -55,7 +55,7 @@ services:
       - ./nginx-config:/etc/nginx/conf.d
     ports:
       - 80:80   #non secure
-      - 443:443 #ssl
+      #- 443:443 #ssl
     depends_on:
       - excellent-erp
     restart: always
